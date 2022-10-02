@@ -105,4 +105,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.syntax = %i[should expect]
   end
+
+  config.when_first_matching_example_defined(:db) do
+    require_relative 'support/db'
+  end
 end

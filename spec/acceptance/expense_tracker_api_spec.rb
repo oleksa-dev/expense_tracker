@@ -5,7 +5,7 @@ require 'rack/test'
 require 'json'
 
 module ExpenseTracker
-  RSpec.describe 'Expense Tracker API' do
+  RSpec.describe 'Expense Tracker API', :db do
     include Rack::Test::Methods
 
     def app
@@ -46,8 +46,6 @@ module ExpenseTracker
       expect(last_response.status).to eq(200)
 
       expenses = JSON.parse(last_response.body)
-      # expenses << zoo
-      # expenses << coffee
       expect(expenses).to contain_exactly(coffee, zoo)
     end
   end

@@ -14,7 +14,6 @@ module ExpenseTracker
     post '/expense' do
       expense = JSON.parse(request.body.read)
       result = @ledger.record(expense)
-      debugger
       if result.success?
         JSON.generate(expense_id: result.expense_id)
       else
