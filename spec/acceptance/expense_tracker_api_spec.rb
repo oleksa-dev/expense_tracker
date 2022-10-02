@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/api'
 require 'rack/test'
 require 'json'
@@ -17,14 +19,6 @@ module ExpenseTracker
       parsed = JSON.parse(last_response.body)
       expect(parsed).to include('expense_id' => a_kind_of(Integer))
       expense.merge('id' => parsed['expense_id'])
-    end
-
-    it 'records submitted expenses' do
-      coffee = post_expense({
-        payee: 'Starbucks',
-        amount: 5.75,
-        date: '2022-08-11'
-      })
     end
 
     it 'records submitted expenses' do
