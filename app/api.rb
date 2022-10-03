@@ -2,6 +2,7 @@
 
 require 'sinatra/base'
 require 'json'
+require_relative 'ledger'
 require 'debug'
 
 module ExpenseTracker
